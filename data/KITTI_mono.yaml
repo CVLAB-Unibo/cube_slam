@@ -1,0 +1,128 @@
+%YAML:1.0
+
+#--------------------------------------------------------------------------------------------
+# System Config
+#--------------------------------------------------------------------------------------------
+scene_name: kitti
+sensor_mode: mono
+
+enable_loop_closing: false
+enable_viewer: true
+enable_viewmap: true
+enable_viewimage: true
+parallel_mapping: true
+
+whether_detect_object: true
+whether_read_offline_cuboidtxt: false
+whether_sample_cam_roll_pitch: false
+associate_point_with_object: true
+obj_det_2d_thre: 0.5
+
+bundle_object_opti: true
+build_worldframe_on_ground: true
+camera_object_BA_weight: 2.0
+
+whether_dynamic_object: true
+remove_dynamic_features: true
+use_dynamic_klt_features: false
+object_velocity_BA_weight: 0.5
+
+use_truth_trackid: true
+triangulate_dynamic_pts: false
+ba_dyna_pt_obj_cam: false
+ba_dyna_obj_velo: true
+ba_dyna_obj_cam: true
+
+mono_firstframe_truth_depth_init: true
+mono_firstframe_Obj_depth_init: false
+mono_allframe_Obj_depth_init: false
+
+enable_ground_height_scale: false
+ground_everyKFs: 10
+ground_roi_middle: 3.0
+ground_roi_lower: 3.0
+ground_inlier_pts: 20
+ground_dist_ratio: 0.08
+
+whether_save_online_detected_cuboids: false
+whether_save_final_optimized_cuboids: true
+
+draw_map_truth_paths: true
+draw_nonlocal_mappoint: true
+
+#--------------------------------------------------------------------------------------------
+# Camera Parameters. Adjust them!
+#--------------------------------------------------------------------------------------------
+
+# Camera calibration and distortion parameters (OpenCV) 
+Camera.fx: 718.335
+Camera.fy: 718.335
+Camera.cx: 600.3891
+Camera.cy: 181.5122
+
+Camera.k1: 0.0
+Camera.k2: 0.0
+Camera.p1: 0.0
+Camera.p2: 0.0
+Camera.k3: 0
+
+#Camera.width: 1238
+#Camera.height: 374
+
+# Camera frames per second 
+Camera.fps: 10.0
+
+# stereo baseline times fx
+Camera.bf: 380.8185
+
+# Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
+Camera.RGB: 1
+
+# Close/Far threshold. Baseline times.
+ThDepth: 35
+
+#--------------------------------------------------------------------------------------------
+# SLAM Parameters
+#--------------------------------------------------------------------------------------------
+# Initial pose, camera parallel to ground
+init_x:       0
+init_y:       0
+init_z:       1.7
+init_qx:      -0.7071
+init_qy:      0
+init_qz:      0
+init_qw:      0.7071
+
+#--------------------------------------------------------------------------------------------
+# ORB Parameters
+#--------------------------------------------------------------------------------------------
+
+# ORB Extractor: Number of features per image
+ORBextractor.nFeatures: 2000  #3000
+
+# ORB Extractor: Scale factor between levels in the scale pyramid 	
+ORBextractor.scaleFactor: 1.2
+
+# ORB Extractor: Number of levels in the scale pyramid	
+ORBextractor.nLevels: 8
+
+# ORB Extractor: Fast threshold
+# Image is divided in a grid. At each cell FAST are extracted imposing a minimum response.
+# Firstly we impose iniThFAST. If no corners are detected we impose a lower value minThFAST
+# You can lower these values if your images have low contrast			
+ORBextractor.iniThFAST: 20  # 20 18
+ORBextractor.minThFAST: 7   # 7  5
+
+#--------------------------------------------------------------------------------------------
+# Viewer Parameters
+#--------------------------------------------------------------------------------------------
+Viewer.KeyFrameSize: 0.6
+Viewer.KeyFrameLineWidth: 2
+Viewer.GraphLineWidth: 1
+Viewer.PointSize: 2
+Viewer.CameraSize: 0.7
+Viewer.CameraLineWidth: 3
+Viewer.ViewpointX: 0
+Viewer.ViewpointY: -100
+Viewer.ViewpointZ: -0.1
+Viewer.ViewpointF: 2000
